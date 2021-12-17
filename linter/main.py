@@ -26,8 +26,9 @@ class Subway:
         '''
         sauce = self.choose_sauce(self.sauce)
         bread = "multigrain" # sorry we are running out of all other breads
+        print(sauce)
         return sauce
-
+        
 if __name__ == "__main__":
     sub = Subway("tangy", "Ginger")
     sauce = sub.create_sub()
