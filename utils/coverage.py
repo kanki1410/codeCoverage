@@ -5,7 +5,7 @@ Set threshold for passing: threshold ( presently set as 2 for testing in linter.
 import argparse
 import logging
 import coverage
-import test_main
+from codeCoverage.linter import test_main
 
 logging.getLogger().setLevel(logging.INFO)
 
