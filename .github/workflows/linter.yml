@@ -24,5 +24,5 @@ jobs:
         python utils/lint.py --path ./linter --threshold 2
     - name: Analysing the code coverage
       run: |
-        coverage run --source=linter/main.py -m pytest linter/test_main.py
+        ccoverage run -m pytest linter/test_main.py
         coverage report -m
