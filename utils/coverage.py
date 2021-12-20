@@ -29,6 +29,10 @@ parser.add_argument('-p',
                     default='./src',
                     type=str)
 
+
+cov.stop()
+results = cov.save()
+data = cov.sysinfo()
 parser.add_argument('-t',
                     '--threshold',
                     help='score threshold to fail coverage runner | '
@@ -36,10 +40,6 @@ parser.add_argument('-t',
                          'Type: %(type)s ',
                     default=70,
                     type=float)
-cov.stop()
-results = cov.save()
-data = cov.sysinfo()
-
 
 final_score = results
 
