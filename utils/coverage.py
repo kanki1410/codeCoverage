@@ -23,7 +23,7 @@ cov.start()
 
 parser.add_argument('-p',
                     '--path',
-                    help='path to directory you want to run pylint | '
+                    help='path to directory you want to run coverage | '
                          'Default: %(default)s | '
                          'Type: %(type)s ',
                     default='./src',
