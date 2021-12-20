@@ -34,14 +34,18 @@ parser.add_argument('-t',
                     type=float)
 
 args = parser.parse_args()
+path = str(args.path)
+logging.info(path)
+
 cov.start()
 
-path = str(args.path)
+
 
 cov.stop()
 results = cov.save()
 data = cov.sysinfo()
 threshold = float(args.threshold)
+logging.info(threshold)
 logging.info(results)
 logging.info(data)
 final_score = results
