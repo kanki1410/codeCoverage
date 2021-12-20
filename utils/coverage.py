@@ -10,11 +10,6 @@ logging.getLogger().setLevel(logging.INFO)
 
 parser = argparse.ArgumentParser(prog="COVERAGE")
 
-
-logging.info('coverage Starting | '
-             'Path: {} | '
-             'Threshold: {} '.format(path, threshold))
-
 cov = coverage.Coverage()
 
 parser.add_argument('-p',
@@ -49,6 +44,9 @@ logging.info(threshold)
 logging.info(results)
 logging.info(data)
 final_score = results
+logging.info('coverage Starting | '
+             'Path: {} | '
+             'Threshold: {} '.format(path, threshold))
 
 if final_score < threshold:
 
