@@ -5,28 +5,10 @@ Set threshold for passing: threshold ( presently set as 2 for testing in linter.
 import argparse
 import logging
 import coverage
-from codeCoverage.linter import test_main
 
 logging.getLogger().setLevel(logging.INFO)
 
 parser = argparse.ArgumentParser(prog="LINT")
-
-
-parser.add_argument('-p',
-                    '--path',
-                    help='path to directory you want to run pylint | '
-                         'Default: %(default)s | '
-                         'Type: %(type)s ',
-                    default='./src',
-                    type=str)
-
-parser.add_argument('-t',
-                    '--threshold',
-                    help='score threshold to fail pylint runner | '
-                         'Default: %(default)s | '
-                         'Type: %(type)s ',
-                    default=7,
-                    type=float)
 
 args = parser.parse_args()
 path = str(args.path)
@@ -38,9 +20,28 @@ logging.info('PyLint Starting | '
 
 cov = coverage.Coverage()
 cov.start()
-result = test_main.test_sauce_selection()
+
+parser.add_argument('-p',
+                    '--path',
+                    help='path to directory you want to run pylint | '
+                         'Default: %(default)s | '
+                         'Type: %(type)s ',
+                    default='./src',
+                    type=str)
+
+parser.add_argument('-t',
+                    '--threshold',
+                    help='score threshold to fail coverage runner | '
+                         'Default: %(default)s | '
+                         'Type: %(type)s ',
+                    default=70,
+                    type=float)
 cov.stop()
-final_score = results.linter.stats.global_note
+results = cov.save()
+data = cov.sysinfo()
+
+
+final_score = results
 
 if final_score < threshold:
 
