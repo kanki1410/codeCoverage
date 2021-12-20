@@ -8,18 +8,14 @@ import coverage
 
 logging.getLogger().setLevel(logging.INFO)
 
-parser = argparse.ArgumentParser(prog="LINT")
+parser = argparse.ArgumentParser(prog="COVERAGE")
 
-args = parser.parse_args()
-path = str(args.path)
-threshold = float(args.threshold)
 
-logging.info('PyLint Starting | '
+logging.info('coverage Starting | '
              'Path: {} | '
              'Threshold: {} '.format(path, threshold))
 
 cov = coverage.Coverage()
-cov.start()
 
 parser.add_argument('-p',
                     '--path',
@@ -29,10 +25,6 @@ parser.add_argument('-p',
                     default='./src',
                     type=str)
 
-
-cov.stop()
-results = cov.save()
-data = cov.sysinfo()
 parser.add_argument('-t',
                     '--threshold',
                     help='score threshold to fail coverage runner | '
@@ -41,6 +33,17 @@ parser.add_argument('-t',
                     default=70,
                     type=float)
 
+args = parser.parse_args()
+cov.start()
+
+path = str(args.path)
+
+cov.stop()
+results = cov.save()
+data = cov.sysinfo()
+threshold = float(args.threshold)
+logging.info(results)
+logging.info(data)
 final_score = results
 
 if final_score < threshold:
