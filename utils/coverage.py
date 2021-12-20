@@ -4,13 +4,13 @@ Set threshold for passing: threshold ( presently set as 2 for testing in linter.
 '''
 import argparse
 import logging
-import coverage
+from coverage import Coverage
 
 logging.getLogger().setLevel(logging.INFO)
 
 parser = argparse.ArgumentParser(prog="COVERAGE")
 
-cov = coverage.Coverage()
+cov = Coverage()
 
 parser.add_argument('-p',
                     '--path',
